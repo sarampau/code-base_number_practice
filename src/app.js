@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Head from './components/head'
 import Input from './components/input';
 import Output from './components/output';
+import Button from './components/button';
 import Dropdown from './components/dropdown';
 import './css/style.css';
 
@@ -36,6 +37,10 @@ class App extends Component {
         let input = this.state.input;
         let baseNum = this.state.baseNum;
         for (let i = input.length - 1; i >= 0; i--) {
+            if (input.length > 10) {
+                alert(`Input is ${input.length} digits long. Please reduce your input to 10 digits or less.`);
+                break;
+            }
             if (input < 0) {
                 alert('Input must be a positive number.');
                 break;
@@ -59,19 +64,27 @@ class App extends Component {
         return (
             <div>
                 <Head />
-                <div className='form'>
-                    <Input 
-                        handleInput={this.handleInput}
-                        handleClick={this.handleClick}
-                        input={this.state.input}    
-                    />
-                    <Dropdown 
-                        baseNum={this.state.baseNum}
-                        handleNumSys={this.handleNumSys}
-                    />
-                    <Output 
-                        output={this.state.output}
-                    />
+                <div className='main-container'>
+                    <div>
+                        <Input 
+                            handleInput={this.handleInput}
+                            input={this.state.input}    
+                        />
+                        <Dropdown 
+                            baseNum={this.state.baseNum}
+                            handleNumSys={this.handleNumSys}
+                        />
+                    </div>
+                    <div>
+                        <Button 
+                            handleClick={this.handleClick}
+                        />
+                    </div>
+                    <div>
+                        <Output 
+                            output={this.state.output}
+                        />
+                    </div>
                 </div>
             </div>
         )

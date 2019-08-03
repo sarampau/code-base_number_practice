@@ -5,7 +5,7 @@ class Dropdown extends Component {
     render() {
         return (
             <div>
-                <select value={this.props.baseNum} onChange={this.props.handleNumSys}>
+                <select className='selector' value={this.props.baseNum} onChange={this.props.handleNumSys}>
                     <option value='' defaultValue>Select a base number</option>
                     <option value='2'>2</option>
                     <option value='3'>3</option>

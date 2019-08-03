@@ -6,8 +6,11 @@ class Head extends Component {
         return (
             <div>
                 <h1 className='head'>
-                    Convert Binary to Decimal
+                    Convert to Decimal
                 </h1>
+                <h3 className='instructions'>
+                    Enter a value and its base number to output the value as a decimal.
+                </h3>
             </div>
         )
     }

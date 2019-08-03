@@ -4,8 +4,8 @@ class Output extends Component {
     
     render() {
         return (
-            <div className='output'>
-                <h5>Output:</h5>
+            <div>
+                <h5 className='output-head'>Output:</h5>
                 <p className='output-text'>{this.props.output}</p>
             </div>
         )

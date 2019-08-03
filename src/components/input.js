@@ -10,9 +10,8 @@ class Input extends Component {
                     type='number'
                     onChange={this.props.handleInput}
                     value={this.props.input}
-                    placeholder='Enter binary number here'
+                    placeholder='Enter value here'
                 />
-                <button className='button' onClick={this.props.handleClick}>Calculate</button>
             </div>
         )
     }
