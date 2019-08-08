@@ -4,6 +4,7 @@ import Input from './components/input';
 import Output from './components/output';
 import Button from './components/button';
 import Dropdown from './components/dropdown';
+import Toggle from './components/toggle';
 import './css/style.css';
 
 class App extends Component {
@@ -12,11 +13,13 @@ class App extends Component {
         this.state = {
             input: '',
             output: '',
-            baseNum: ''
+            baseNum: '',
+            toggle: false
         }
         this.handleInput = this.handleInput.bind(this);
         this.handleClick = this.handleClick.bind(this);
-        this.handleNumSys = this.handleNumSys.bind(this);
+        this.handleBaseNum = this.handleBaseNum.bind(this);
+        this.handleToggle = this.handleToggle.bind(this);
     }
 
     handleInput(e) {
@@ -25,39 +28,65 @@ class App extends Component {
         });
     }
 
-    handleNumSys(e) {
+    handleBaseNum(e) {
         this.setState({
             baseNum: e.target.value
         })
     }
 
+    handleToggle() {
+        this.setState({
+            toggle: !this.state.toggle
+        })
+    }
+
     handleClick() {
-        let output = 0;
+        let output1 = 0;
+        let output2 = '';
         let multiplier = 1;
         let input = this.state.input;
         let baseNum = this.state.baseNum;
-        for (let i = input.length - 1; i >= 0; i--) {
-            if (input.length > 10) {
-                alert(`Input is ${input.length} digits long. Please reduce your input to 10 digits or less.`);
-                break;
+        let toggle = this.state.toggle;
+            if (toggle === false) {
+                for (let i = input.length - 1; i >= 0; i--) {
+                    if (input.length > 15) {
+                        alert(`Input is ${input.length} digits long. Please reduce your input to 15 digits or less.`);
+                        break;
+                    }
+                    if (input < 0) {
+                        alert('Input must be a positive number.');
+                        break;
+                    }
+                    if (baseNum == '') {
+                        alert('You must enter a base number.');
+                        break;
+                    }
+                    if (input[i] > baseNum - 1) {
+                        alert('Input digits must be less than base number.');
+                        break;
+                    } 
+                    else {
+                        output1 += input[i] * multiplier;
+                        multiplier = multiplier * baseNum;
+                    }
+                }
+                this.setState({
+                    output: output1
+                })
+            } 
+            else if (toggle = true){
+                while ( input > 0 ) { 
+                    if (input.length > 15) {
+                        alert(`Input is ${input.length} digits long. Please reduce your input to 15 digits or less.`);
+                        break;
+                    }
+                    output2 = ( input % baseNum ) + output2; 
+                    input = Math.floor( input / baseNum ); 
+                    }
+                this.setState({
+                    output: output2
+                })
             }
-            if (input < 0) {
-                alert('Input must be a positive number.');
-                break;
-            }
-            if (input[i] > baseNum - 1) {
-                alert('Input does not match with base number system.');
-                break;
-            } else {
-                output+= input[i] * multiplier;
-                multiplier = multiplier * baseNum;
-            }
-        }
-        this.setState({
-            output: output,
-            input: '',
-            baseNum: ''
-        })
     }
 
     render() {
@@ -65,6 +94,10 @@ class App extends Component {
             <div>
                 <Head />
                 <div className='main-container'>
+                    <Toggle 
+                        handleToggle={this.handleToggle}
+                        toggle={this.state.toggle}
+                    />
                     <div>
                         <Input 
                             handleInput={this.handleInput}
@@ -72,7 +105,7 @@ class App extends Component {
                         />
                         <Dropdown 
                             baseNum={this.state.baseNum}
-                            handleNumSys={this.handleNumSys}
+                            handleBaseNum={this.handleBaseNum}
                         />
                     </div>
                     <div>

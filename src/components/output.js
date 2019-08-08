@@ -5,8 +5,7 @@ class Output extends Component {
     render() {
         return (
             <div>
-                <h5 className='output-head'>Output:</h5>
-                <p className='output-text'>{this.props.output}</p>
+                {this.props.output !== '' && <p className='output-text'>{`Your input is equal to ${this.props.output}.`}</p>}
             </div>
         )
     }
