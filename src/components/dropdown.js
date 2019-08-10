@@ -4,8 +4,8 @@ class Dropdown extends Component {
 
     render() {
         return (
-            <div>
-                <select className='selector' value={this.props.baseNum} onChange={this.props.handleBaseNum}>
+            <div className='dropdown-container'>
+                <select className='dropdown' value={this.props.baseNum} onChange={this.props.handleBaseNum}>
                     <option value='' defaultValue>Select a base number</option>
                     <option value='2'>2</option>
                     <option value='3'>3</option>

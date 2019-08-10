@@ -4,7 +4,7 @@ class Button extends Component {
 
     render() {
         return (
-            <div>
+            <div className='button-container'>
                 <button className='button' 
                     onClick={this.props.handleClick}>Calculate</button>
             </div>

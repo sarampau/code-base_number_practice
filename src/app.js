@@ -80,6 +80,10 @@ class App extends Component {
                         alert(`Input is ${input.length} digits long. Please reduce your input to 15 digits or less.`);
                         break;
                     }
+                    if (input < 0) {
+                        alert('Input must be a positive number.');
+                        break;
+                    }
                     output2 = ( input % baseNum ) + output2; 
                     input = Math.floor( input / baseNum ); 
                     }
@@ -98,7 +102,7 @@ class App extends Component {
                         handleToggle={this.handleToggle}
                         toggle={this.state.toggle}
                     />
-                    <div>
+                    <div className='selectors'>
                         <Input 
                             handleInput={this.handleInput}
                             input={this.state.input}    
@@ -107,17 +111,13 @@ class App extends Component {
                             baseNum={this.state.baseNum}
                             handleBaseNum={this.handleBaseNum}
                         />
-                    </div>
-                    <div>
-                        <Button 
-                            handleClick={this.handleClick}
-                        />
-                    </div>
-                    <div>
-                        <Output 
-                            output={this.state.output}
-                        />
-                    </div>
+                        </div>
+                    <Button 
+                        handleClick={this.handleClick}
+                    />                   
+                    <Output 
+                        output={this.state.output}
+                    />                    
                 </div>
             </div>
         )

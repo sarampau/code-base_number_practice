@@ -4,7 +4,7 @@ class Input extends Component {
     
     render() {
         return (
-            <div>
+            <div className='input-container'>
                 <input
                     className='input'
                     type='number'
