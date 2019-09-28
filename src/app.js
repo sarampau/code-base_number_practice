@@ -13,13 +13,13 @@ class App extends Component {
         this.state = {
             input: '',
             output: '',
-            baseNum: '',
-            toggle: false
+            baseNum: ''
+            // toggle: false
         }
         this.handleInput = this.handleInput.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleBaseNum = this.handleBaseNum.bind(this);
-        this.handleToggle = this.handleToggle.bind(this);
+        // this.handleToggle = this.handleToggle.bind(this);
     }
 
     handleInput(e) {
@@ -34,11 +34,11 @@ class App extends Component {
         })
     }
 
-    handleToggle() {
-        this.setState({
-            toggle: !this.state.toggle
-        })
-    }
+    // handleToggle() {
+    //     this.setState({
+    //         toggle: !this.state.toggle
+    //     })
+    // }
 
     handleClick() {
         let output1 = 0;
@@ -99,8 +99,8 @@ class App extends Component {
                 <Head />
                 <div className='main-container'>
                     <Toggle 
-                        handleToggle={this.handleToggle}
-                        toggle={this.state.toggle}
+                        // handleToggle={this.handleToggle}
+                        // toggle={this.state.toggle}
                     />
                     <div className='selectors'>
                         <Input 
@@ -111,7 +111,7 @@ class App extends Component {
                             baseNum={this.state.baseNum}
                             handleBaseNum={this.handleBaseNum}
                         />
-                        </div>
+                    </div>
                     <Button 
                         handleClick={this.handleClick}
                     />                   
