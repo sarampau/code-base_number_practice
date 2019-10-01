@@ -4,15 +4,15 @@ import Input from './components/input';
 import Output from './components/output';
 import Button from './components/button';
 import Dropdown from './components/dropdown';
-import Toggle from './components/toggle';
+import Toggler from './components/toggler';
 import './css/style.css';
 
 function App() {
 
-    const [input, setInput] = useState('');
+    let [input, setInput] = useState('');
     const [output, setOutput] = useState('');
     const [baseNum, setBaseNum] = useState('');
-    const [toggle, setToggle] = useState(false);
+    let [toggle, setToggle] = useState(false);
 
     const handleInput = e => setInput(e.target.value);
 
@@ -70,7 +70,7 @@ function App() {
         <div>
             <Head />
             <div className='main-container'>
-                <Toggle 
+                <Toggler
                     handleToggle={handleToggle}
                     toggle={toggle}
                 />
@@ -103,13 +103,13 @@ function App() {
 //         this.state = {
 //             input: '',
 //             output: '',
-//             baseNum: ''
-//             // toggle: false
+//             baseNum: '',
+//             toggle: false
 //         }
 //         this.handleInput = this.handleInput.bind(this);
 //         this.handleClick = this.handleClick.bind(this);
 //         this.handleBaseNum = this.handleBaseNum.bind(this);
-//         // this.handleToggle = this.handleToggle.bind(this);
+//         this.handleToggle = this.handleToggle.bind(this);
 //     }
 
 //     handleInput(e) {
@@ -124,11 +124,11 @@ function App() {
 //         })
 //     }
 
-//     // handleToggle() {
-//     //     this.setState({
-//     //         toggle: !this.state.toggle
-//     //     })
-//     // }
+//     handleToggle() {
+//         this.setState({
+//             toggle: !this.state.toggle
+//         })
+//     }
 
 //     handleClick() {
 //         let output1 = 0;
@@ -184,14 +184,14 @@ function App() {
 //     }
 
 //     render() {
-//         // console.log(this.props.toggle)
+//         console.log('app: ', this.state.toggle)
 //         return (
 //             <div>
 //                 <Head />
 //                 <div className='main-container'>
 //                     <Toggle 
-//                         // handleToggle={this.handleToggle}
-//                         // toggle={this.state.toggle}
+//                         handleToggle={this.handleToggle}
+//                         toggle={this.state.toggle}
 //                     />
 //                     <div className='selectors'>
 //                         <Input 
